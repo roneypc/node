@@ -11,7 +11,17 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-	res.send('Hola mundo express..!!!');
+	//res.send('Hola mundo express..!!!');
+	var drinks = [
+		{name: 'Bloody Mary', drunkness: '2'},
+		{name: 'Beer', drunkness: '5'},
+		{name: 'Wine', drunkness: '15'}
+	];
+	res.render('home', {
+		name: "Roberto",
+		url: "www.roney.es",
+		drinks: drinks
+	});
 });
 
 router.get('/bienvenido/:nombre', function(req, res) {

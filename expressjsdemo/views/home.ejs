@@ -1,0 +1,15 @@
+<html>
+	<body>
+		<h1>Hola, como tamos Express.js y EJS</h1>
+		<hr>
+		<h3>Nombre: <%=name %></h3>
+		<h3>URL: <%=url %></h3>
+		<hr>
+		<h4>Tus bebidas:</h4>
+		<ul>
+			<% drinks.forEach(function(drink) { %>
+				<li><%= drink.name %> - <%= drink.drunkness %></li>
+			<% }); %>
+		</ul>
+	</body>
+</html>
