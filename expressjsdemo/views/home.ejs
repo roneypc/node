@@ -7,9 +7,11 @@
 		<hr>
 		<h4>Tus bebidas:</h4>
 		<ul>
-			<% drinks.forEach(function(drink) { %>
-				<li><%= drink.name %> - <%= drink.drunkness %></li>
-			<% }); %>
+			<% drinks.forEach(function(drink) { 
+				if (drink.drunkness > 5) { %>
+					<li><%= drink.name %> - <%= drink.drunkness %></li>
+				<% }
+			}); %>
 		</ul>
 	</body>
 </html>

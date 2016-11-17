@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var upload = multer(); 
+
 //Simple request time logger
 router.use(function(req, res, next) {
 	console.log("Nueva petición recibida " + Date.now());
@@ -10,13 +14,48 @@ router.use(function(req, res, next) {
 	next();
 });
 
+// for parsing application/json
+router.use(bodyParser.json());
+
+// for parsing application/x-www-form-urlencoded
+router.use(bodyParser.urlencoded({ extended: true }));
+
+// for parsing multipart/form-data
+router.use(upload.array());
+
+// index page 
+router.get('/demo', function(req, res) {
+    res.render('pages/index');
+});
+
+// contact page 
+router.get('/contact', function(req, res) {
+    res.render('pages/contact');
+});
+
+// about page 
+router.get('/about', function(req, res) {
+    res.render('pages/about');
+});
+
+router.post('/contact', function(req, res){
+	res.render('pages/contact', {
+		body: req.body
+	});
+    //console.log(req.body);
+    //res.send("recieved your request! -->>>" +req.body.say +" " +req.body.to);
+});
+
 router.get('/', function(req, res) {
-	//res.send('Hola mundo express..!!!');
+	// se crea la variabla drinks con contenido json
 	var drinks = [
 		{name: 'Bloody Mary', drunkness: '2'},
 		{name: 'Beer', drunkness: '5'},
+		{name: 'Sangria', drunkness: '4'},
+		{name: 'Wiskie', drunkness: '21'},
 		{name: 'Wine', drunkness: '15'}
 	];
+	// Llamada a la plantilla con parámetros
 	res.render('home', {
 		name: "Roberto",
 		url: "www.roney.es",

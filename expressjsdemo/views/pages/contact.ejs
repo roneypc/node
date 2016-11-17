@@ -1,0 +1,53 @@
+<!-- views/pages/form.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="col-sm-8">           
+                <div class="jumbotron">
+                    <% if (this.body) { %>
+                        <h2 class="text-center"><%=body.say %> <%=body.to %></h2>
+                    <% } %>
+                    <form action="/contact", method="POST">
+                        <div class="form-group row">
+                          <label for="say" class="col-xs-2 col-form-label">Say</label>
+                          <div class="col-xs-10">
+                            <input class="form-control" type="text" value="Hi" id="say" name="say">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="to" class="col-xs-2 col-form-label">To</label>
+                          <div class="col-xs-10">
+                            <input class="form-control" type="text" value="Express forms" id="to" name="to">
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send my greetings</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                
+                <div class="well">
+                    <h3>Look I'm A Sidebar!</h3>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    
+</body>
+</html>
